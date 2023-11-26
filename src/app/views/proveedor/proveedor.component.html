@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-primary">
+    <a href="/" class="navbar-brand">Inicio</a>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID Proveedor</th>
+                        <th>Proveedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                    *ngFor="let proveedor of proveedorArray"
+                    (click)="openForEditPr(proveedor)"
+                    [class.active] = "proveedor == selectedProveedor"
+                    >
+                        <td>{{proveedor.id_proveedor}}</td>
+                        <td>{{proveedor.nombre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card mt-4"></div>
+        </div>
+    </div>
+</div>

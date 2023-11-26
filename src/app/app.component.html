@@ -1,10 +1,11 @@
 <nav class="navbar navbar-dark bg-primary">
   <a href="/" class="navbar-brand">Inicio</a>
+  <a routerLink="/proveedor-component" class="navbar-brand">Lista de proveedores</a>
 </nav>
 <div class="container">
   <div class="row">
     <div class="col-md-8 mt-4">
-      <ul class="list-group">
+      <ul class="list-group" id="items">
         <li 
         *ngFor="let producto of productoArray" class="list-group-item list-group-item-action"
         (click)="openForEditP(producto)"
@@ -71,12 +72,23 @@
             Enviar
           </button>
           <button 
-          *ngIf="selectedEmployee.id !== 0"
+          *ngIf="selectedProducto.id_producto !== 0"
           class="btn btn-danger"
           (click)="deleteP()"
           >
             Borrar
           </button>
+
+          <br>
+          <button
+          *ngIf="selectedProducto.id_producto !== 0"
+          class="btn btn-secondary"
+          (click)="resetP()"
+          >
+            Limpiar
+          </button>
+
+          
         </div>
       </div>
   </div>
