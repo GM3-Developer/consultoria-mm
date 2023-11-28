@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProveedorComponent } from "./views/proveedor/proveedor.component";
+import { ProductoComponent } from './views/producto/producto.component';
 
 const routes: Routes = [
-  {path: '',
-  loadChildren: ()=> import('./app.component').then(a => a.AppComponent)},
-  {path: 'proveedor-component', 
-  loadChildren: ()=> import('./views/proveedor/proveedor.component').then(m => m.ProveedorComponent)}
+  {path: '', redirectTo: '/proveedor', pathMatch: 'full'},
+  {path: 'producto', component: ProductoComponent},
+  {path: 'proveedor', component: ProveedorComponent}
 ];
 
 @NgModule({

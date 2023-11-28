@@ -1,0 +1,99 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID PRODUCTO</th>
+              <th>MARCA</th>
+              <th>MODELO</th>
+              <th>TIPO DE PRODUCTO</th>
+              <th>PRECIO DE COSTO</th>
+              <th>PRECIO UNITARIO</th>
+              <th>PRECIO DE MAYOREO</th>
+              <th>ID DEL PROVEEDOR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+            *ngFor="let producto of productoArray"
+            (click)="openForEditP(producto)"
+            [class.table-primary] = "producto == selectedProducto"
+            >
+              <td>{{producto.id_producto}}</td>
+              <td>{{producto.marca}}</td>
+              <td>{{producto.modelo}}</td>
+              <td>{{producto.tipo_producto}}</td>
+              <td>{{producto.precio_costo}}</td>
+              <td>{{producto.precio_unitario}}</td>
+              <td>{{producto.precio_mayoreo}}</td>
+              <td>{{producto.id_proveedor}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-4">
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="card-title">Productos - Registrar / Editar</div>
+    
+            <div class="form-group my-2">
+              <input type="text" [(ngModel)]="selectedProducto.marca" placeholder="Inserte la marca del producto" class="form-control">
+            </div>
+    
+            <div class="form-group my-2">
+              <input type="text" [(ngModel)]="selectedProducto.modelo" placeholder="Inserte modelo del producto" class="form-control">
+            </div>
+    
+            <div class="form-group my-2">
+              <input type="text" [(ngModel)]="selectedProducto.tipo_producto" placeholder="Inserte el tipo del producto" class="form-control">
+            </div>
+    
+            <div class="form-group my-2">
+              <input type="number" [(ngModel)]="selectedProducto.precio_costo" placeholder="Inserte precio de costo" class="form-control">
+            </div>
+
+            <div class="form-group my-2">
+              <input type="hidden" [(ngModel)]="selectedProducto.precio_unitario" placeholder="Inserte precio de unitario" class="form-control">
+            </div>
+
+            <div class="form-group my-2">
+              <input type="hidden" [(ngModel)]="selectedProducto.precio_mayoreo" placeholder="Inserte precio de mayoreo" class="form-control">
+            </div>
+
+
+            <select class="form-select" aria-label="Default select example"
+            [(ngModel)]="selectedProducto.id_proveedor"
+            >
+              <option value="0" selected>Seleccione a un proveedor</option>
+              <option  
+              *ngFor="let proveedor of proveedorArray"
+              value="{{proveedor.id_proveedor}}">{{proveedor.nombre}}</option>
+            </select>
+
+    
+            <button (click)="addOrEditP()" class="btn btn-primary">
+              Enviar
+            </button>
+            <button 
+            *ngIf="selectedProducto.id_producto !== 0"
+            class="btn btn-danger"
+            (click)="deleteP()"
+            >
+              Borrar
+            </button>
+  
+            <br>
+            <button
+            *ngIf="selectedProducto.id_producto !== 0"
+            class="btn btn-secondary"
+            (click)="resetP()"
+            >
+              Limpiar
+            </button>
+  
+            
+          </div>
+        </div>
+    </div>
+  </div>
